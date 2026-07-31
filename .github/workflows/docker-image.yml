@@ -58,7 +58,6 @@ jobs:
             latest=auto
           tags: |
             type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
             type=raw,value=latest
 
       # Build and push multi-arch image
