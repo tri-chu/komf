@@ -1,7 +1,9 @@
 # Komga and Kavita Metadata Fetcher
-Download latest version from https://github.com/Snd-R/komf/releases
+
+Download latest version from <https://github.com/tric/komf/releases>
 
 ## Overview
+
 Komga and Kavita Metadata Fetcher is a tool that fetches metadata and thumbnails for your digital comic book library.\
 It
 can automatically pick up added series and update their metadata and thumbnail.\
@@ -9,7 +11,9 @@ You can also manually search and
 identify series, or match the entire library or a series.
 
 ### Komga and Kavita webui integration
+
 Browser web extension will let configure komf and identify series directly from komga or kavita webui
+
 - [Chrome download]( https://chromewebstore.google.com/detail/komf/bhppjldobkpocplgfcimljjhdjgbpdnh)
 - [Firefox download](https://addons.mozilla.org/en-US/firefox/addon/komf/)
 - deprecated [Komf userscript](https://github.com/Snd-R/komf-userscript) is still functional, but it will not receive new updates
@@ -40,7 +44,7 @@ To run the application using Docker Compose, use the following YAML configuratio
 version: "3.7"
 services:
   komf:
-    image: sndxr/komf:latest
+    image: tric/komf:latest
     container_name: komf
     ports:
       - "8085:8085"
@@ -61,7 +65,7 @@ services:
 
 ### Running with Docker Create
 
-```
+```sh
 docker create \
   --name komf \
   -p 8085:8085 \
@@ -74,14 +78,14 @@ docker create \
   -e KOMF_LOG_LEVEL=INFO \
   -v /path/to/config:/config \
   --restart unless-stopped \
-  sndxr/komf:latest
+  tric/komf:latest
 ```
 
 - if you don't already have a komga or kavita network you'll need to network create a new one
-    - `docker network create my_network`
+  - `docker network create my_network`
 - attach komf and media server to new network:
-    - `docker network connect my_network komga_or_kavita`
-    - `docker network connect my_network komf`
+  - `docker network connect my_network komga_or_kavita`
+  - `docker network connect my_network komf`
 - start the container `docker start komf`
 
 ## Example `application.yml` Config
@@ -371,7 +375,7 @@ message format by providing your own template files and specifying directory pat
 For docker deployments templates should be
 placed in mounted `/config/<discord or apprise>` directory without specifying `templatesDirectory`
 
-### Discord template file names:
+### Discord template file names
 
 - title.vm
 - title_url.vm
@@ -380,7 +384,7 @@ placed in mounted `/config/<discord or apprise>` directory without specifying `t
 - field_<index>_name<_inline>.vm
 - field_<index>_value.vm
 
-### Apprise template file names:
+### Apprise template file names
 
 - apprise_title.vm
 - apprise_body.vm
@@ -406,6 +410,7 @@ Templates are written using Apache Velocity ([link to docs](https://velocity.apa
 ```
 
 ### Template variables
+
 ```typescript
 // Variables available in templates:
 interface Webhook {
